@@ -6,6 +6,7 @@ const globallyAccessible = {
 };
 
 function firstReducer(state = globallyAccessible, action) {
+  console.log('2. Inside Reducer', { state });
   if (action.type === 'THEME_TOGGLE') {
     return {
       ...state,
