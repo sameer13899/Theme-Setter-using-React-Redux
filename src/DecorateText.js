@@ -1,9 +1,6 @@
-import React, { useContext } from 'react';
-import { ThemeProvider, ZoomProvider } from './StyleProvider';
+import React from 'react';
 
-function DecorateText({ children }) {
-  const { theme } = useContext(ThemeProvider);
-  const { zoom } = useContext(ZoomProvider);
+function DecorateText({ children, theme, zoom }) {
   return <div style={{ color: theme, fontSize: zoom }}>{children}</div>;
 }
 
