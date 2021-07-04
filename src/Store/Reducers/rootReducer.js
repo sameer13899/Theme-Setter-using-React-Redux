@@ -1,4 +1,4 @@
-import { THEMES, ZOOMING } from './Constants';
+import { THEMES, ZOOMING } from '../../Constants';
 
 const globallyAccessible = {
   theme: THEMES.GREEN,
