@@ -1,7 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function DecorateText({ children, theme, zoom }) {
+function DecorateText({ children, state }) {
+  const { theme, zoom } = state;
   return <div style={{ color: theme, fontSize: zoom }}>{children}</div>;
 }
 
-export default DecorateText;
+const mapStateToProps = state => {
+  return { state };
+};
+
+export default connect(mapStateToProps)(DecorateText);

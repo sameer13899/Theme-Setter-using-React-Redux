@@ -1,10 +1,10 @@
 import React from 'react';
 import DecorateText from './DecorateText';
 
-function Home({ theme, zoom }) {
+function Home() {
   return (
     <>
-      <DecorateText theme={theme} zoom={zoom}>
+      <DecorateText>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -15,9 +15,7 @@ function Home({ theme, zoom }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <DecorateText theme={theme} zoom={zoom}>
-          Learn React
-        </DecorateText>
+        <DecorateText>Learn React</DecorateText>
       </a>
     </>
   );

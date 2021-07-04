@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { store } from './store';
+import { Provider } from 'react-redux';
+
+function StyledApp() {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StyledApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
