@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleContext } from '.';
+import { StyleContext } from './Store/store';
 
 function DecorateText({ children }) {
   const { theme, zoom } = useContext(StyleContext).state;

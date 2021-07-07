@@ -4,7 +4,7 @@ import Home from './Home';
 import DecorateText from './DecorateText';
 import { toggleTheme, toggleZoom } from './Store/ActionCreators/viewActions';
 import { useContext } from 'react';
-import { StyleContext } from '.';
+import { StyleContext } from './Store/store';
 
 function App() {
   const dispatch = useContext(StyleContext).dispatch;

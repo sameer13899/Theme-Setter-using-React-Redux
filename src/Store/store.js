@@ -1,24 +1,34 @@
-import { createStore, applyMiddleware } from 'redux';
-import { firstReducer } from './Reducers/rootReducer';
+import React, { createContext, useReducer } from 'react';
+import { THEMES, ZOOMING } from '../Constants';
 
-const myMiddleWare = _ => next => action => next(action);
-
-function toggleTheme() {
-  return { type: 'THEME_TOGGLE' };
-}
-
-const asyncMiddleWare = _ => next => action => {
-  if (action.type === 'DELAYED_THEME_TOGGLE') {
-    console.log('In delay for', action.delay, 'ms');
-    setTimeout(() => next(toggleTheme()), action.delay);
-  } else {
-    next(action);
-  }
+const globallyAccessible = {
+  theme: THEMES.GREEN,
+  zoom: ZOOMING.SMALL,
 };
 
-const store = createStore(
-  firstReducer,
-  applyMiddleware(myMiddleWare, asyncMiddleWare)
-);
+export const StyleContext = createContext();
 
-export { store };
+function apperanceReducer(state = globallyAccessible, action) {
+  if (action.type === 'THEME_TOGGLE') {
+    return {
+      ...state,
+      theme: state.theme === THEMES.RED ? THEMES.GREEN : THEMES.RED,
+    };
+  } else if (action.type === 'ZOOM_TOGGLE') {
+    return {
+      ...state,
+      zoom: state.zoom === ZOOMING.SMALL ? ZOOMING.LARGE : ZOOMING.SMALL,
+    };
+  } else return state;
+}
+
+function Store({ children }) {
+  const [state, dispatch] = useReducer(apperanceReducer, globallyAccessible);
+  return (
+    <StyleContext.Provider value={{ state, dispatch }}>
+      {children}
+    </StyleContext.Provider>
+  );
+}
+
+export default Store;
